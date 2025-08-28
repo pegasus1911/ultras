@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="group-container">
+  <h1>Group Name: {{ group.name }}</h1>
+  <h2>Country: {{ group.country }} </h2>
+  <h3>  Founded: {{ group.founding_year }}</h3>
+  <p>Description: {{ group.description }}</p>
+  <a href="{% url 'group-index' %}">All groups</a>
+
+</section>
+{% endblock %}

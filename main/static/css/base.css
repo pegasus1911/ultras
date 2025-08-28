@@ -1,0 +1,29 @@
+:root {
+  font-size: 62.5%;
+
+  /* Theme Colors */
+  --primary-red: #C8102E;
+  --primary-black: #000000;
+  --primary-white: #FFFFFF;
+  --gold: #FFD700;
+
+  /* Component Colors */
+  --nav-bg: rgba(200, 16, 46, 0.85);
+  --nav-bg-ff: rgba(200, 16, 46, 0.95);
+  --borders: var(--primary-black) solid 2px;
+  --text-color: var(--primary-black);
+  --link-hover-color: var(--gold);
+  --button-bg: var(--primary-white);
+  --button-bg-hover: #f2f2f2;
+  --submit: var(--primary-red);
+  --warn: #FF4500;
+  --danger: #DC143C;
+  --secondary: var(--gold);
+  --card-box-shadow: 5px 5px 6px -1px #aaa;
+  --font-xtreme: 4.2rem;
+  --font-xxl: 3.6rem;
+  --font-xl: 2.4rem;
+  --font-l: 1.8rem;
+  --font-reg: 1.6rem;
+  --card-border-radius: 6px;
+}
