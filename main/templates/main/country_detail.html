@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>ULTRAS IN {{ country.name|upper }}</h2>
+
+<a href="{% url 'group-create' %}?country_id={{ country.id }}">Add a new Ultras Group</a>
+
+<ul>
+    {% for group in groups %}
+        <li><a href="{% url 'group-detail' group.id %}">{{ group.name }}</a></li>
+    {% empty %}
+        <li>No ultras groups yet in {{ country.name }}.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,16 +1,21 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-
 TIFO_TYPES = (
     ('C', 'Choreo'),
     ('P', 'Pyro Show'),
     ('B', 'Banner'),
 )
 
+class Country(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
 class Group(models.Model):
     name = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)   
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='groups')
     founding_year = models.IntegerField()
     description = models.TextField()
 
@@ -22,14 +27,22 @@ class Group(models.Model):
 
 
 class Tifo(models.Model):
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
     date = models.DateField('Tifo date')
-    match = models.CharField(max_length=200, default=' ')
+    tifo_type = models.CharField(
+        max_length=1,
+        choices=TIFO_TYPES,
+        default=TIFO_TYPES[0][0]
+    )
     description = models.TextField()
-    picture = models.ImageField(upload_to='tifos/', blank=True, null=True)
+    picture = models.ImageField(upload_to='tifos/', null=True, blank=True)
+    match = models.CharField(max_length=200, default="Unknown match")  
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.group.name} Tifo on {self.date} for {self.match}"
+        return f"{self.get_tifo_type_display()} on {self.date}"
 
     class Meta:
-        ordering = ['-date']  # newest tifos show up first
+        ordering = ['-date']
+

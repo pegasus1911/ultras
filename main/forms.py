@@ -4,7 +4,7 @@ from .models import Tifo
 class TifoForm(forms.ModelForm):
     class Meta:
         model = Tifo
-        fields = ['date', 'match', 'description', 'picture']
+        fields = ['date', 'tifo_type', 'match', 'description', 'picture'] 
         widgets = {
             'date': forms.DateInput(
                 format='%Y-%m-%d',

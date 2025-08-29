@@ -1,20 +1,19 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
-<h1>Ultras Groups</h1>
-<section class="card-container">
-  {% for group in groups %}
-    <div class="card">
-        <div class="card-content">
-            <h2 class="card-title">{{ group.name }}</h2>
-            <p>{{ group.country }}</p>
-            {% comment %} <p><small>{{ group.description }}</small></p> {% endcomment %}
-            <a href="{% url 'group-detail' group.id %}">View Details</a>
-        </div>
-      </a>
-    </div>
-  {% endfor %}
-</section>
-{% endblock %}
+  <h1>Groups</h1>
 
+  <a href="{% url 'group-create' %}" class="btn btn-primary">+ Add a Group</a>
+
+  {% if groups %}
+    <ul>
+      {% for group in groups %}
+        <li>
+          <a href="{% url 'group_detail' group.id %}">{{ group.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No groups yet. Be the first to add one!</p>
+  {% endif %}
+{% endblock %}

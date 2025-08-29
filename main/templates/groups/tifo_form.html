@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add Tifo for {{ group.name }}</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Add Tifo</button>
+    <a href="{% url 'group-detail' group.id %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

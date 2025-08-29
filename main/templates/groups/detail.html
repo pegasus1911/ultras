@@ -1,26 +1,32 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
 <section class="group-container">
   <h1>Group Name: {{ group.name }}</h1>
-  <h2>Country: {{ group.country }} </h2>
+  <h2>Country: {{ group.country }}</h2>
   <h3>Founded: {{ group.founding_year }}</h3>
   <p>Description: {{ group.description }}</p>
-  <a href="{% url 'group-index' %}">All groups</a>
-  <div class="group-actions">
-  <a href="{% url 'group-update' group.id %}" class="btn warn">Edit</a>
-  <a href="{% url 'group-delete' group.id %}" class="btn danger">Delete</a>
-</div>
-<h2>Tifos</h2>
 
-<h3>Add a Tifo</h3>
-<form action="{% url 'add-tifo' group.id %}" method="post" autocomplete="off">
-  {% csrf_token %}
-  {{ tifo_form.as_p }}
-  <button type="submit" class="btn submit">Add Tifo</button>
-</form>
+  <div class="group-actions">
+    {% comment %} <a href="{% url 'group-index' %}" class="btn">All Groups</a> {% endcomment %}
+    <a href="{% url 'group-update' group.id %}" class="btn warn">Edit</a>
+    <a href="{% url 'group-delete' group.id %}" class="btn danger">Delete</a>
+  </div>
+
+  <h2>Tifos</h2>
+
+  <h3><a href="{% url 'tifo-create' group.id %}" class="btn btn-success">Add Tifo</a></h3>
+  {% comment %} <a href="{% url 'tifo-create' group.id %}" class="btn btn-success">Add Tifo on Separate Page</a> {% endcomment %}
+  {% comment %} <!-- Inline Tifo form -->
+   <form action="{% url 'tifo-create' group.id %}" method="post" enctype="multipart/form-data" autocomplete="off">
+    {% csrf_token %}
+    {{ tifo_form.as_p }}
+    <button type="submit" class="btn submit">Add Tifo</button>
+  </form> {% endcomment %}
 
 <h3>Past Tifos</h3>
-{% if group.tifo_set.all.count %}
+{% if group.tifo_set.exists %}
   <table>
     <thead>
       <tr>
@@ -28,7 +34,7 @@
         <th>Type</th>
         <th>Description</th>
         <th>Picture</th>
-
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -44,7 +50,12 @@
             No image
           {% endif %}
         </td>
-
+        <td>
+          {% if tifo.user == request.user %}
+            <a href="{% url 'tifo-edit' tifo.id %}" class="btn">Edit</a> |
+            <a href="{% url 'tifo-delete' tifo.id %}" class="btn danger">Delete</a>
+          {% endif %}
+        </td>
       </tr>
       {% endfor %}
     </tbody>

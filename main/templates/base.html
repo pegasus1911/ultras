@@ -13,16 +13,25 @@
   <body>
     <header>
       <div class="header-logo-container">
-        <a href="/">
-          {% comment %} <img src="{% static 'images/logo.png' %}" alt="Ultras World Logo" /> {% endcomment %}
-        </a>
+        {% comment %} <a href="/">
+          <img src="{% static 'images/logo.png' %}" alt="Ultras World Logo" />
+        </a> {% endcomment %}
       </div>
       <nav>
-        <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/groups">Groups</a></li>
-          <li><a href="{% url 'group-create' %}">Add a Group</a></li>
-          {% comment %} <li><a href="/tifos">Tifos</a></li> i dont know if i need it or not but probably no{% endcomment %} 
+        <ul class="navbar">
+          <li><a href="{% url 'home' %}">Ultras</a></li>
+          {% comment %} <li><a href="{% url 'group-index' %}">Groups</a></li> {% endcomment %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'countries-index' %}">Countries</a></li>
+          {% if user.is_authenticated %}
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+          </form>
+          {% else %}
+          <li><a href="{% url 'login' %}">Sign In</a></li>
+          {% endif %}
+
         </ul>
       </nav>
     </header>

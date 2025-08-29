@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Countries</h2>
+
+<form method="get">
+    <input type="text" name="q" placeholder="Search country..." value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+<ul>
+    {% for country in countries %}
+        <li><a href="{% url 'country-detail' country.id %}">{{ country.name }}</a></li>
+    {% empty %}
+        <li>No countries found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
