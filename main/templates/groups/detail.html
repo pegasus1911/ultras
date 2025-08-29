@@ -3,9 +3,55 @@
 <section class="group-container">
   <h1>Group Name: {{ group.name }}</h1>
   <h2>Country: {{ group.country }} </h2>
-  <h3>  Founded: {{ group.founding_year }}</h3>
+  <h3>Founded: {{ group.founding_year }}</h3>
   <p>Description: {{ group.description }}</p>
   <a href="{% url 'group-index' %}">All groups</a>
+  <div class="group-actions">
+  <a href="{% url 'group-update' group.id %}" class="btn warn">Edit</a>
+  <a href="{% url 'group-delete' group.id %}" class="btn danger">Delete</a>
+</div>
+<h2>Tifos</h2>
+
+<h3>Add a Tifo</h3>
+<form action="{% url 'add-tifo' group.id %}" method="post" autocomplete="off">
+  {% csrf_token %}
+  {{ tifo_form.as_p }}
+  <button type="submit" class="btn submit">Add Tifo</button>
+</form>
+
+<h3>Past Tifos</h3>
+{% if group.tifo_set.all.count %}
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Picture</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for tifo in group.tifo_set.all %}
+      <tr>
+        <td>{{ tifo.date }}</td>
+        <td>{{ tifo.get_tifo_type_display }}</td>
+        <td>{{ tifo.description }}</td>
+        <td>
+          {% if tifo.picture %}
+            <img src="{{ tifo.picture.url }}" alt="Tifo image" style="max-width:150px; max-height:150px;">
+          {% else %}
+            No image
+          {% endif %}
+        </td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>⚠️ This group has not created any tifos yet.</p>
+{% endif %}
 
 </section>
 {% endblock %}
