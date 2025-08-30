@@ -15,7 +15,6 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-
 def signup(request):
     error_message = ''
     if request.method == 'POST':
@@ -28,7 +27,8 @@ def signup(request):
             error_message = 'Invalid sign up - try again'
     else:
         form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form, 'error_message': error_message})
+    return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message})
+
 
 @login_required
 def group_index(request):
@@ -95,7 +95,7 @@ def tifo_delete(request, tifo_id):
 
 class GroupCreate(LoginRequiredMixin, CreateView):
     model = Group
-    fields = ['name', 'founding_year', 'description']
+    fields = ['name', 'founding_year', 'description', 'logo']
     template_name = 'groups/group_form.html'
 
     def form_valid(self, form):
@@ -106,14 +106,14 @@ class GroupCreate(LoginRequiredMixin, CreateView):
 
 class GroupUpdate(LoginRequiredMixin, UpdateView):
     model = Group
-    fields = ['country', 'founding_year', 'description']
+    fields = ['name', 'country', 'founding_year', 'description', 'logo']
     template_name = 'groups/group_form.html'
 
 class GroupDelete(LoginRequiredMixin, DeleteView):
     model = Group
     success_url = '/groups/'
     template_name = 'groups/group_confirm_delete.html'
-
+    
 @login_required
 def countries_list(request):
     query = request.GET.get('q', '')
