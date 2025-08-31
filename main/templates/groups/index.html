@@ -13,7 +13,6 @@
           <h2 class="group-name">{{ group.name }}</h2>
           <p class="group-country">Country: {{ group.country }}</p>
           <p class="group-founded">Founded: {{ group.founding_year }}</p>
-          {% comment %} <p class="group-desc">{{ group.description|truncatewords:15 }}</p> {% endcomment %}
           <a href="{% url 'group-detail' group.id %}" class="btn">View Details</a>
         </div>
       </div>
