@@ -1,123 +1,127 @@
-/* Base */
-body {
-  font-family: 'Poppins', sans-serif;
+/* base.css */
+
+/* Reset some default styles */
+* {
   margin: 0;
-  background: #121212;
-  color: #e0e0e0;
-  line-height: 1.6;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Navbar */
-.navbar {
+/* Typography */
+body {
+  font-family: 'Rubik', sans-serif;
+  background-color: #121212; /* Dark background for a modern sports vibe */
+  color: #f0f0f0;
+  line-height: 1.6;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+/* Links */
+a {
+  color: #e63946; /* Vibrant red to highlight links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  color: #f1faee;
+  outline: none;
+}
+
+/* Header */
+header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: #1f1f1f;
-  padding: 15px 30px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #1d1d1d;
+  border-bottom: 3px solid #e63946;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-.brand {
+.header-logo-container {
+  flex: 0 0 auto;
+}
+
+nav {
+  flex: 1 1 auto;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  justify-content: center; /* centers navbar */
+}
+
+.navbar {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
   font-weight: 700;
-  font-size: 1.4rem;
-  color: #f04e23;
-  text-decoration: none;
-}
-
-.brand .logo {
-  height: 40px;
-  transition: transform 0.3s;
-}
-
-.brand:hover .logo {
-  transform: scale(1.1);
-}
-
-.nav-links {
-  display: flex;
   align-items: center;
-  gap: 20px;
 }
-
-.nav-links a {
-  color: #e0e0e0;
-  text-decoration: none;
+.navbar li {
   font-weight: 500;
-  padding: 6px 10px;
-  border-radius: 5px;
-  transition: all 0.3s;
+  font-size: 1rem;
 }
 
-.nav-links a:hover {
-  background: #f04e23;
-  color: #fff;
+.navbar li a {
+  display: inline-block;
+  text-align: center;
 }
 
-.btn, .logout-form button {
-  background: #f04e23;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  color: #fff;
+.navbar li a:hover,
+.navbar li a:focus {
+  background-color: #e63946;
+  color: #f1faee;
+  outline: none;
+  border-radius: 8px; /* adjust radius as you like */
+  padding: 6px 12px;   /* optional: add padding so rounding looks good */
+  transition: all 0.3s ease; /* smooth effect */
+}
+
+header form {
+  margin: 0;
+}
+
+header form button {
+  background-color: transparent;
+  border: 2px solid #e63946;
+  color: #e63946;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
   cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s, transform 0.2s;
+  padding: 6px 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn:hover, .logout-form button:hover {
-  background: #d43b10;
-  transform: scale(1.05);
+header form button:hover,
+header form button:focus {
+  background-color: #e63946;
+  color: #f1faee;
+  outline: none;
 }
 
 /* Main content */
 main {
-  padding: 30px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-/* Footer */
-.footer {
-  background: #1f1f1f;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 0.9rem;
-  color: #aaa;
-  border-top: 1px solid #333;
-}
+/* Responsive Typography */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
 
-/* Responsive */
-@media (max-width: 768px) {
   .navbar {
+    gap: 1rem;
+  }
+
+  header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
-    padding: 15px 20px;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .nav-links a, .btn, .logout-form button {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .brand {
-    font-size: 1.2rem;
-  }
-
-  main {
-    padding: 20px 10px;
   }
 }

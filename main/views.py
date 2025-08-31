@@ -27,7 +27,7 @@ def signup(request):
 @login_required
 def group_index(request):
     groups = Group.objects.all()
-    return render(request, 'groups/index.html', {'groups': groups})
+    return render(request, 'groups/groups.html', {'groups': groups})
 @login_required
 def group_detail(request, group_id):
     group = get_object_or_404(Group, id=group_id)
