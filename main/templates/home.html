@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 {% block content %}
 <section class="home">
-  <h1>Welcome to Ultras</h1>
-  <p>Explore fan groups, tifos, and the world of football ultras.</p>
-  <a href="{% url 'group-index' %}" class="btn">View Groups</a>
+  <h1>Welcome to The Ultras World</h1>
+  <h2>You'll Never Understand If You're Not<br> ONE OF US</h2>
+  <a href="{% url 'countries-index' %}" class="btn">View Groups</a>
+  <a href="{% url 'group-index' %}">
+    <img src="{% static 'images/ultras.jpg' %}" alt="ultras image" style="max-width:150px; max-height:150px;">
+  </a>
 </section>
 {% endblock %}
+

@@ -14,7 +14,7 @@
   {% endif %}
 </div>
 
-<form action="" method="post" class="form-container">
+<form action="" method="post" class="form-container" enctype="multipart/form-data">
   {% csrf_token %}
   <table>
     {{ form.as_table }}

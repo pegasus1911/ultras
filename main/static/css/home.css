@@ -1,0 +1,77 @@
+/* General section styling */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  background: linear-gradient(to bottom, #1a1a1a, #222);
+  color: #fff;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Headline styling */
+.home h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #f04e23; /* strong ultras-style accent */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+
+/* Paragraph styling */
+.home p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* Button styling */
+.home .btn {
+  background-color: #f04e23;
+  color: white;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.home .btn:hover {
+  background-color: #d43b10;
+  transform: scale(1.05);
+}
+
+/* Image styling */
+.home img {
+  margin-top: 30px;
+  max-width: 200px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(240, 78, 35, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(240, 78, 35, 0.8);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home h1 {
+    font-size: 2.2rem;
+  }
+
+  .home p {
+    font-size: 1.1rem;
+  }
+
+  .home img {
+    max-width: 150px;
+  }
+}

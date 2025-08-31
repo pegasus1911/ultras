@@ -18,6 +18,8 @@ class Group(models.Model):
     country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='groups')
     founding_year = models.IntegerField()
     description = models.TextField()
+    logo = models.ImageField(upload_to='group_logos/', null=True, blank=True)
+
 
     def __str__(self):
         return self.name

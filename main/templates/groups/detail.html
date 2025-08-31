@@ -3,66 +3,47 @@
 
 {% block content %}
 <section class="group-container">
-  <h1>Group Name: {{ group.name }}</h1>
-  <h2>Country: {{ group.country }}</h2>
-  <h3>Founded: {{ group.founding_year }}</h3>
-  <p>Description: {{ group.description }}</p>
+  <h1>{{ group.name }}</h1>
+  {% if group.logo %}
+    <img src="{{ group.logo.url }}" alt="{{ group.name }} logo" class="group-logo">
+  {% endif %}
+  <p><strong>Country:</strong> {{ group.country }}</p>
+  <p><strong>Founded:</strong> {{ group.founding_year }}</p>
+  <p>{{ group.description }}</p>
 
   <div class="group-actions">
-    {% comment %} <a href="{% url 'group-index' %}" class="btn">All Groups</a> {% endcomment %}
     <a href="{% url 'group-update' group.id %}" class="btn warn">Edit</a>
     <a href="{% url 'group-delete' group.id %}" class="btn danger">Delete</a>
   </div>
 
-  <h2>Tifos</h2>
+  <div class="tifo-header">
+    <h2>Tifos</h2>
+    <a href="{% url 'tifo-create' group.id %}" class="btn btn-success">Add Tifo</a>
+  </div>
 
-  <h3><a href="{% url 'tifo-create' group.id %}" class="btn btn-success">Add Tifo</a></h3>
-  {% comment %} <a href="{% url 'tifo-create' group.id %}" class="btn btn-success">Add Tifo on Separate Page</a> {% endcomment %}
-  {% comment %} <!-- Inline Tifo form -->
-   <form action="{% url 'tifo-create' group.id %}" method="post" enctype="multipart/form-data" autocomplete="off">
-    {% csrf_token %}
-    {{ tifo_form.as_p }}
-    <button type="submit" class="btn submit">Add Tifo</button>
-  </form> {% endcomment %}
-
-<h3>Past Tifos</h3>
-{% if group.tifo_set.exists %}
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Picture</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
+  {% if group.tifo_set.exists %}
+    <div class="tifo-grid">
       {% for tifo in group.tifo_set.all %}
-      <tr>
-        <td>{{ tifo.date }}</td>
-        <td>{{ tifo.get_tifo_type_display }}</td>
-        <td>{{ tifo.description }}</td>
-        <td>
-          {% if tifo.picture %}
-            <img src="{{ tifo.picture.url }}" alt="Tifo image" style="max-width:150px; max-height:150px;">
-          {% else %}
-            No image
-          {% endif %}
-        </td>
-        <td>
-          {% if tifo.user == request.user %}
-            <a href="{% url 'tifo-edit' tifo.id %}" class="btn">Edit</a> |
-            <a href="{% url 'tifo-delete' tifo.id %}" class="btn danger">Delete</a>
-          {% endif %}
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-{% else %}
-  <p>⚠️ This group has not created any tifos yet.</p>
-{% endif %}
+        <div class="tifo-card">
+          <p><strong>Match:<br></strong> {{ tifo.match }}</p>
+          <a href="{% url 'tifo-detail' tifo.id %}">
+            {% if tifo.picture %}
+              <img src="{{ tifo.picture.url }}" alt="{{ tifo.get_tifo_type_display }} tifo">
+            {% else %}
+              <img src="{% static 'images/placeholder.png' %}" alt="No tifo image">
+            {% endif %}
+            <div class="tifo-info">
+              {% comment %} <p><strong>{{ tifo.date|date:"M d, Y" }}</strong></p> {% endcomment %}
+              {% comment %} <p>{{ tifo.get_tifo_type_display }}</p> {% endcomment %}
 
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>⚠️ This group has not created any tifos yet.</p>
+  {% endif %}
+<a href="{% url 'country-detail' group.country.id %}" class="btn btn-secondary">See All {{ group.country.name }} Groups</a>
 </section>
 {% endblock %}

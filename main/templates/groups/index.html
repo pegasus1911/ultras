@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Groups</h1>
-
-  <a href="{% url 'group-create' %}" class="btn btn-primary">+ Add a Group</a>
-
-  {% if groups %}
-    <ul>
-      {% for group in groups %}
-        <li>
-          <a href="{% url 'group_detail' group.id %}">{{ group.name }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No groups yet. Be the first to add one!</p>
-  {% endif %}
+<section class="groups">
+  <h1 class="page-title">World's Ultras Groups</h1>
+  <div class="groups-grid">
+    {% for group in groups %}
+      <div class="group-card">
+        {% if group.logo %}
+          <img src="{{ group.logo.url }}" alt="{{ group.name }} logo" class="group-logo">
+        {% endif %}
+        <div class="group-info">
+          <h2 class="group-name">{{ group.name }}</h2>
+          <p class="group-country">Country: {{ group.country }}</p>
+          <p class="group-founded">Founded: {{ group.founding_year }}</p>
+          {% comment %} <p class="group-desc">{{ group.description|truncatewords:15 }}</p> {% endcomment %}
+          <a href="{% url 'group-detail' group.id %}" class="btn">View Details</a>
+        </div>
+      </div>
+    {% empty %}
+      <p>No groups available yet.</p>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}
