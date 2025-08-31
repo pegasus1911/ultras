@@ -1,23 +1,25 @@
 .group-detail-container {
   max-width: 900px;
-  margin: 40px auto !important;
-  padding: 20px;
-  text-align: center !important; 
+  margin: 50px auto;
+  padding: 30px 20px;
   font-family: 'Poppins', sans-serif;
   color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center !important; 
+  align-items: center;
+  background: linear-gradient(135deg, #1a1a1a, #111);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 .group-header {
   display: flex;
   flex-direction: column;
-  align-items: center !important;
-  justify-content: center; 
-  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
   margin-bottom: 40px;
-  width: 100%; 
+  width: 100%;
 }
 
 .group-logo {
@@ -26,24 +28,27 @@
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 0 25px rgba(240, 78, 35, 0.6);
-  transition: transform 0.3s, box-shadow 0.3s;
-  display: block;
-  margin: 0 auto !important; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.group-logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(240, 78, 35, 0.8);
 }
 
 .group-header h1 {
   font-size: 3rem;
   color: #f04e23;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   margin: 0;
-  text-align: center !important;
+  text-align: center;
 }
 
 .group-info {
   display: flex;
   flex-direction: column;
-  align-items: center !important; 
-  gap: 10px;
+  align-items: center;
+  gap: 12px;
   width: 100%;
 }
 
@@ -51,23 +56,93 @@
   margin: 5px 0;
   font-size: 1.2rem;
   color: #ddd;
-  text-align: center !important; 
-  max-width: 600px; 
+  text-align: center;
+  max-width: 650px;
+  line-height: 1.6;
 }
 
 .group-actions {
   display: flex;
-  justify-content: center !important; 
+  justify-content: center;
   gap: 15px;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .group-actions .btn {
-  padding: 10px 25px;
-  font-weight: bold;
-  border-radius: 6px;
-  transition: all 0.3s;
-  text-align: center !important;
+  padding: 12px 28px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.group-actions .btn.warn {
+  background-color: #f59a42;
+}
+
+.group-actions .btn.warn:hover {
+  background-color: #f04e23;
+}
+
+.group-actions .btn.danger {
+  background-color: #e74c3c;
+}
+
+.group-actions .btn.danger:hover {
+  background-color: #c0392b;
+}
+
+.tifo-section {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.tifo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tifo-header h2 {
+  color: #f04e23;
+  font-size: 2rem;
+}
+
+.tifo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.tifo-card {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tifo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(240, 78, 35, 0.5);
+}
+
+.tifo-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.no-tifos {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ccc;
+  margin: 20px 0;
 }
 
 @media (max-width: 768px) {
@@ -87,5 +162,9 @@
   .group-actions .btn {
     padding: 8px 20px;
     font-size: 0.9rem;
+  }
+
+  .tifo-header h2 {
+    font-size: 1.5rem;
   }
 }
