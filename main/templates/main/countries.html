@@ -1,18 +1,26 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
 
 {% block content %}
-<h2>Search For A Country</h2>
+<section class="country-search-container">
+    <h1>Search For A Country</h1>
+    <form method="get" class="country-search-form">
+        <input type="text" name="q" placeholder="Type a country name..." value="{{ query|default:'' }}">
+        <button type="submit">Search</button>
+    </form>
 
-<form method="get">
-    <input type="text" name="q" placeholder="Search country..." value="{{ query }}">
-    <button type="submit">Search</button>
-</form>
-
-<ul>
-    {% for country in countries %}
-        <li><a href="{% url 'country-detail' country.id %}">{{ country.name }}</a></li>
-    {% empty %}
-        <li>No countries found.</li>
-    {% endfor %}
-</ul>
+    {% if query %}
+        <ul class="search-results">
+            {% for country in countries %}
+                <li><a href="{% url 'country-detail' country.id %}">{{ country.name }}</a></li>
+            {% empty %}
+                <li>No countries found.</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>
 {% endblock %}
