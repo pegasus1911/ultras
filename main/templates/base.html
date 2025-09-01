@@ -4,7 +4,6 @@
   <head>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" /> 
@@ -13,18 +12,24 @@
   </head>
   <body>
     <header>
-      <div class="header-logo-container">
-        {% comment %} <a href="/">
+      {% comment %} <div class="header-logo-container">
+       <a href="/">
           <img src="{% static 'images/logo.png' %}" alt="Ultras World Logo" />
-        </a> {% endcomment %}
-      </div>
+        </a>
+      </div> {% endcomment %}
       <nav>
         <ul class="navbar">
+          {% comment %} <li class="nav-logo">
+        <a href="/">
+          <img src="{% static 'images/logo.png' %}" alt="Ultras World Logo" />
+        </a>
+      </li> {% endcomment %}
+          {% if user.is_authenticated %}
           <li><a href="{% url 'home' %}">Ultras</a></li>
-          {% comment %} <li><a href="{% url 'group-index' %}">Groups</a></li> {% endcomment %}
           <li><a href="{% url 'countries-index' %}">Countries</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'group-index' %}">Groups</a></li> <!-- <- added link -->
+          <li><a href="{% url 'group-index' %}">Groups</a></li> 
+          {% endif %}
 
           {% if user.is_authenticated %}
           <form method="post" action="{% url 'logout' %}">
@@ -32,7 +37,10 @@
             <button type="submit">Logout</button>
           </form>
           {% else %}
+          <li><a href="{% url 'home' %}">Ultras</a></li>
           <li><a href="{% url 'login' %}">Sign In</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+
           {% endif %}
 
         </ul>
