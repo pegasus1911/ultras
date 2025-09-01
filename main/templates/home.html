@@ -5,13 +5,12 @@
 {% endblock %}
 
 {% block content %}
-<section class="home">
-  <h1>Welcome to The Ultras World</h1>
-  <h2>You'll Never Understand If You're Not<br> ONE OF US</h2>
-  <a href="{% url 'countries-index' %}" class="btn">View Groups</a>
-  <a href="{% url 'group-index' %}">
-    <img src="{% static 'images/ultras.jpg' %}" alt="ultras image" style="max-width:150px; max-height:150px;">
-  </a>
-</section>
-{% endblock %}
+<video autoplay muted loop class="video-background">
+  <source src="{% static 'video/0830.mp4' %}" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
+<div class="home-content">
+  {% comment %} <a href="{% url 'countries-index' %}" class="btn btn-main">View Groups</a> {% endcomment %}
+</div>
+{% endblock %}

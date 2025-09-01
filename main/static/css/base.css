@@ -75,9 +75,6 @@ nav {
   background-color: #e63946;
   color: #f1faee;
   outline: none;
-  border-radius: 8px; /* adjust radius as you like */
-  padding: 6px 12px;   /* optional: add padding so rounding looks good */
-  transition: all 0.3s ease; /* smooth effect */
 }
 
 header form {
