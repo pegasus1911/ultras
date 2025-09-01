@@ -1,0 +1,123 @@
+/* tifo-detail.css */
+
+.tifo-container {
+  max-width: 700px;
+  margin: 3rem auto 5rem;
+  padding: 0 1rem;
+  color: #f0f0f0;
+  font-family: 'Rubik', sans-serif;
+}
+
+/* Group Name Header */
+.tifo-container h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #e63946;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Details paragraphs */
+.tifo-container p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #ddd;
+}
+
+/* Strong labels */
+.tifo-container p strong {
+  color: #e63946;
+}
+
+/* Tifo Picture */
+.tifo-picture {
+  display: block;
+  max-width: 500px;
+  width: 100%;
+  margin: 1.5rem auto 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.7);
+  object-fit: cover;
+}
+
+/* Buttons container */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+
+/* Button base styles */
+.btn {
+  padding: 0.65rem 1.6rem;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 2px solid transparent;
+  font-family: 'Rubik', sans-serif;
+  min-width: 120px;
+  text-align: center;
+  display: inline-block;
+  user-select: none;
+}
+
+/* Success button - Edit */
+.btn-success {
+  background-color: #2a9d8f;
+  color: #f1faee;
+  border: none;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #21867a;
+  outline: none;
+}
+
+/* Danger button - Delete */
+.btn-danger {
+  background-color: transparent;
+  border: 2px solid #e63946;
+  color: #e63946;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: #e63946;
+  color: #f1faee;
+  outline: none;
+}
+
+/* Secondary button - Back */
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #e63946;
+  color: #e63946;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: #e63946;
+  color: #f1faee;
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .btn-group {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn {
+    min-width: 100%;
+  }
+}

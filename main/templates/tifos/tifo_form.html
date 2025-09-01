@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-
+{%load static%}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/tifo-form.css' %}">
+{% endblock %}
 {% block content %}
 <h1>{% if edit %}Edit{% else %}Add{% endif %} Tifo for {{ group.name }}</h1>
 

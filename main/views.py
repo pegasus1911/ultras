@@ -55,9 +55,15 @@ class GroupCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         country_id = self.kwargs.get("country_id")
         country = get_object_or_404(Country, id=country_id)
-        # print(country)
         form.instance.country = country
         return super().form_valid(form)
+    #i added this get_context_data to be able to show the country name while creating a groupp
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        country_id = self.kwargs.get("country_id")
+        context['country'] = get_object_or_404(Country, id=country_id)
+        context['group'] = None  
+        return context
 
     def get_success_url(self):
         return f"/countries/{self.object.country.id}/"

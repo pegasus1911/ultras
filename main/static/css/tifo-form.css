@@ -1,0 +1,129 @@
+/* tifo-form.css */
+
+h1 {
+  text-align: center;
+  color: #e63946;
+  font-weight: 700;
+  font-family: 'Rubik', sans-serif;
+  margin: 3rem 0 2rem;
+  font-size: 2.5rem;
+}
+
+form {
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  background-color: #1d1d1d;
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  border: 2px solid #e63946;
+  box-shadow: 0 0 15px rgba(230, 57, 70, 0.6);
+  font-family: 'Rubik', sans-serif;
+  color: #f0f0f0;
+}
+
+/* Form fields styling */
+form p {
+  margin-bottom: 1.25rem;
+}
+
+form p label {
+  display: block;
+  font-weight: 700;
+  color: #e63946;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+form p input[type="text"],
+form p input[type="date"],
+form p input[type="file"],
+form p select,
+form p textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background-color: #121212;
+  border: 1.5px solid #e63946;
+  border-radius: 6px;
+  color: #f0f0f0;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form p input[type="text"]:focus,
+form p input[type="date"]:focus,
+form p input[type="file"]:focus,
+form p select:focus,
+form p textarea:focus {
+  border-color: #f1faee;
+  outline: none;
+}
+
+form p textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Buttons container */
+form .btn {
+  margin-right: 1rem;
+  padding: 0.65rem 1.8rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Rubik', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+  border: none;
+  min-width: 120px;
+  display: inline-block;
+  text-decoration: none;
+  user-select: none;
+}
+
+/* Submit Button */
+.btn-success {
+  background-color: #2a9d8f;
+  color: #f1faee;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #21867a;
+  outline: none;
+}
+
+/* Cancel Button */
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #e63946;
+  color: #e63946;
+  padding: 0.65rem 1.8rem;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.3;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: #e63946;
+  color: #f1faee;
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  form {
+    padding: 1.5rem 1.75rem;
+  }
+
+  form .btn {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  form .btn-secondary {
+    margin-right: 0;
+  }
+}
