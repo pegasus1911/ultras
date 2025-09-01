@@ -1,0 +1,109 @@
+/* group-form.css */
+
+.page-header {
+  max-width: 700px;
+  margin: 3rem auto 2rem;
+  text-align: center;
+  color: #e63946;
+  font-weight: 700;
+  font-size: 2.5rem;
+  font-family: 'Rubik', sans-serif;
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  background-color: #1d1d1d;
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  border: 2px solid #e63946;
+  box-shadow: 0 0 15px rgba(230, 57, 70, 0.6);
+  font-family: 'Rubik', sans-serif;
+  color: #f0f0f0;
+}
+
+.form-container table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+}
+
+.form-container table tr {
+  vertical-align: middle;
+}
+
+.form-container table td:first-child {
+  padding-right: 1rem;
+  font-weight: 700;
+  color: #e63946;
+  width: 30%;
+  max-width: 210px;
+  white-space: nowrap;
+  font-size: 1.1rem;
+}
+
+.form-container table td:last-child {
+  width: 70%;
+}
+
+.form-container table input[type="text"],
+.form-container table input[type="number"],
+.form-container table input[type="file"],
+.form-container table select,
+.form-container table textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background-color: #121212;
+  border: 1.5px solid #e63946;
+  border-radius: 6px;
+  color: #f0f0f0;
+  font-size: 1rem;
+  font-family: 'Rubik', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.form-container table input[type="text"]:focus,
+.form-container table input[type="number"]:focus,
+.form-container table input[type="file"]:focus,
+.form-container table select:focus,
+.form-container table textarea:focus {
+  border-color: #f1faee;
+  outline: none;
+}
+
+.form-container table textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.btn.submit {
+  display: block;
+  margin: 2rem auto 0;
+  background-color: #e63946;
+  color: #f1faee;
+  font-weight: 700;
+  font-size: 1.3rem;
+  padding: 0.75rem 3rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Rubik', sans-serif;
+}
+
+.btn.submit:hover,
+.btn.submit:focus {
+  background-color: #a62832;
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .form-container table td:first-child {
+    white-space: normal;
+    width: 40%;
+  }
+
+  .form-container table td:last-child {
+    width: 60%;
+  }
+}

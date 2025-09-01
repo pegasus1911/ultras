@@ -1,0 +1,138 @@
+/* countries.css */
+
+.country-search-container {
+  max-width: 600px;
+  margin: 5rem auto;
+  padding: 0 1rem;
+  text-align: center;
+  color: #f0f0f0;
+}
+
+.country-search-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #e63946;
+  font-weight: 700;
+}
+
+/* Form */
+.country-search-form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.country-search-form input[type="text"] {
+  flex: 1 1 300px;
+  font-size: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 3px solid #e63946;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: #1d1d1d;
+  color: #f0f0f0;
+}
+
+.country-search-form input[type="text"]::placeholder {
+  color: #bbb;
+}
+
+.country-search-form input[type="text"]:focus {
+  border-color: #f1faee;
+}
+
+/* Button */
+.country-search-form button {
+  background-color: #e63946;
+  border: none;
+  border-radius: 8px;
+  padding: 0 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1faee;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.country-search-form button:hover,
+.country-search-form button:focus {
+  background-color: #a62832;
+  outline: none;
+}
+
+/* Search Results */
+.search-results {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 400px;
+  color: #f0f0f0;
+  border-top: 2px solid #e63946;
+}
+
+.search-results li {
+  background-color: #1d1d1d;
+  border: 2px solid #e63946;
+  border-top: none;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.search-results li:first-child {
+  border-top: 2px solid #e63946; /* restore top border on first item */
+}
+.search-results li:hover,
+.search-results li:focus-within {
+  background-color: #e63946;
+  color: #f1faee;
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  outline: none;
+}
+
+.search-results li:hover a,
+.search-results li:focus-within a {
+  color: #f1faee;
+  text-decoration: underline;
+}
+
+
+.search-results li:nth-child(odd) {
+  background-color: #282828;
+}
+
+.search-results li:nth-child(even) {
+  background-color: #1d1d1d;
+}
+
+/* No countries found message */
+.search-results li:empty,
+.search-results li:contains('No countries found.') {
+  font-style: italic;
+  color: #bbb;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .country-search-form {
+    flex-direction: column;
+  }
+
+  .country-search-form input[type="text"],
+  .country-search-form button {
+    width: 100%;
+  }
+
+  .country-search-form button {
+    padding: 0.75rem 0;
+  }
+
+  .search-results {
+    max-width: 100%;
+  }
+}

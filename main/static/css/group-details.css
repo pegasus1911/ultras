@@ -1,0 +1,238 @@
+/* group-detail.css */
+
+.group-detail-container {
+  max-width: 900px;
+  margin: 3rem auto 5rem;
+  padding: 0 1rem;
+  color: #f0f0f0;
+  font-family: 'Rubik', sans-serif;
+}
+
+/* Group Header */
+.group-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.group-header h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #e63946;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Group Logo */
+.group-logo {
+  max-width: 180px;
+  max-height: 180px;
+  border-radius: 12px;
+  object-fit: contain;
+  border: 3px solid #e63946;
+  box-shadow: 0 0 10px rgba(230, 57, 70, 0.7);
+}
+
+/* Group Info */
+.group-info p {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #ddd;
+}
+
+.group-info p strong {
+  color: #e63946;
+}
+
+/* Group Actions Buttons */
+.group-actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.6rem 1.6rem;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 2px solid transparent;
+  font-family: 'Rubik', sans-serif;
+  user-select: none;
+  display: inline-block;
+  text-align: center;
+  min-width: 100px;
+}
+
+.btn.warn {
+  background-color: transparent;
+  border-color: #f1c40f; /* Yellow-ish */
+  color: #f1c40f;
+}
+
+.btn.warn:hover,
+.btn.warn:focus {
+  background-color: #f1c40f;
+  color: #121212;
+  outline: none;
+}
+
+.btn.danger {
+  background-color: transparent;
+  border-color: #e63946;
+  color: #e63946;
+}
+
+.btn.danger:hover,
+.btn.danger:focus {
+  background-color: #e63946;
+  color: #f1faee;
+  outline: none;
+}
+
+/* Tifo Section */
+.tifo-section {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+}
+
+.tifo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tifo-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e63946;
+}
+
+.btn-success {
+  background-color: #2a9d8f; /* teal */
+  color: #f1faee;
+  border: none;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #21867a;
+  outline: none;
+}
+
+/* Tifo Grid */
+.tifo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.tifo-card {
+  background-color: #1d1d1d;
+  border: 2px solid #e63946;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  color: #f0f0f0;
+  cursor: pointer;
+}
+
+.tifo-card:hover,
+.tifo-card:focus-within {
+  box-shadow: 0 0 15px #e63946;
+  outline: none;
+}
+
+.tifo-card p {
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  text-align: center;
+  color: #e63946;
+}
+
+.tifo-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1.5px solid #e63946;
+  transition: transform 0.3s ease;
+}
+
+.tifo-card:hover img,
+.tifo-card:focus-within img {
+  transform: scale(1.05);
+}
+
+/* No tifos message */
+.no-tifos {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #bbb;
+  margin: 2rem 0;
+}
+
+/* Button to see all groups */
+.btn-secondary {
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+  background-color: transparent;
+  border: 2px solid #e63946;
+  color: #e63946;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: #e63946;
+  color: #f1faee;
+  outline: none;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .group-logo {
+    max-width: 140px;
+    max-height: 140px;
+  }
+
+  .tifo-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .tifo-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .group-header h1 {
+    font-size: 2rem;
+  }
+
+  .tifo-grid {
+    grid-template-columns: 1fr;
+  }
+}
