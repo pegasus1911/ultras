@@ -9,7 +9,7 @@
 <section class="groups">
   <h1 class="page-title">ULTRAS IN {{ country.name|upper }}</h1>
 
-  <a href="{% url 'group-create' %}?country_id={{ country.id }}" class="btn add-group-btn">Add a new Ultras Group</a>
+<a href="{% url 'group-create' country.id %}" class="btn add-group-btn">Add a new Ultras Group</a>
 
   <div class="groups-grid">
     {% for group in groups %}

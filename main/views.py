@@ -55,6 +55,7 @@ class GroupCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         country_id = self.kwargs.get("country_id")
         country = get_object_or_404(Country, id=country_id)
+        # print(country)
         form.instance.country = country
         return super().form_valid(form)
 

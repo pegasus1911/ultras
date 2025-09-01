@@ -20,13 +20,11 @@ class Group(models.Model):
     description = models.TextField()
     logo = models.ImageField(upload_to='group_logos/', null=True, blank=True)
 
-
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse('group-detail', kwargs={'group_id': self.id})
-
 
 class Tifo(models.Model):
     date = models.DateField('Tifo date')
