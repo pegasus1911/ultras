@@ -29,7 +29,7 @@ def signup(request):
 
 
 
-@login_required
+# @login_required
 def countries_list(request):
     query = request.GET.get("q")
     if query:
@@ -86,7 +86,7 @@ class GroupDelete(LoginRequiredMixin, DeleteView):
         return f"/countries/{self.object.country.id}/"
 
 
-@login_required
+# @login_required
 def group_index(request):
     groups = Group.objects.all()
     return render(request, "groups/groups.html", {"groups": groups})
