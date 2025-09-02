@@ -96,7 +96,6 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'ultras',
-            # The value of 'NAME' should match the value of 'NAME' you replaced.
         }
     }
 
