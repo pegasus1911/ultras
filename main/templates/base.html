@@ -10,26 +10,17 @@
     <title>ULTRA</title>
     {% block head %}{% endblock %}
   </head>
+  
   <body>
     <header>
-      {% comment %} <div class="header-logo-container">
-       <a href="/">
-          <img src="{% static 'images/logo.png' %}" alt="Ultras World Logo" />
-        </a>
-      </div> {% endcomment %}
+     
       <nav>
         <ul class="navbar">
-          {% comment %} <li class="nav-logo">
-        <a href="/">
-          <img src="{% static 'images/logo.png' %}" alt="Ultras World Logo" />
-        </a>
-      </li> {% endcomment %}
-          {% comment %} {% if user.is_authenticated %} {% endcomment %}
+          
           <li><a href="{% url 'home' %}">Ultras</a></li>
           <li><a href="{% url 'countries-index' %}">Countries</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'group-index' %}">Groups</a></li> 
-          {% comment %} {% endif %} {% endcomment %}
 
           {% if user.is_authenticated %}
           <form method="post" action="{% url 'logout' %}">
@@ -37,9 +28,7 @@
             <button type="submit">Logout</button>
           </form>
           {% else %}
-          {% comment %} <li><a href="{% url 'home' %}">Ultras</a></li> {% endcomment %}
           <li><a href="{% url 'login' %}">Sign In</a></li>
-          {% comment %} <li><a href="{% url 'about' %}">About</a></li> {% endcomment %}
 
           {% endif %}
 

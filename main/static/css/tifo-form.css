@@ -1,4 +1,3 @@
-/* tifo-form.css */
 
 h1 {
   text-align: center;
@@ -21,7 +20,6 @@ form {
   color: #f0f0f0;
 }
 
-/* Form fields styling */
 form p {
   margin-bottom: 1.25rem;
 }
@@ -64,7 +62,6 @@ form p textarea {
   resize: vertical;
 }
 
-/* Buttons container */
 form .btn {
   margin-right: 1rem;
   padding: 0.65rem 1.8rem;
@@ -81,7 +78,6 @@ form .btn {
   user-select: none;
 }
 
-/* Submit Button */
 .btn-success {
   background-color: #2a9d8f;
   color: #f1faee;
@@ -93,7 +89,6 @@ form .btn {
   outline: none;
 }
 
-/* Cancel Button */
 .btn-secondary {
   background-color: transparent;
   border: 2px solid #e63946;
@@ -111,7 +106,6 @@ form .btn {
   color: #f1faee;
   outline: none;
 }
-/* Current picture image styling */
 .current-picture {
   margin-bottom: 1.5rem;
   text-align: center;
@@ -125,8 +119,8 @@ form .btn {
 }
 
 .current-picture img.preview-img {
-  max-width: 220px;     /* limit the width */
-  max-height: 140px;    /* limit the height */
+  max-width: 220px;     
+  max-height: 140px;    
   width: auto;
   height: auto;
   border-radius: 12px;
@@ -136,7 +130,6 @@ form .btn {
 }
 
 
-/* Responsive */
 @media (max-width: 480px) {
   form {
     padding: 1.5rem 1.75rem;

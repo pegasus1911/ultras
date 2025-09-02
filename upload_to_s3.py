@@ -26,4 +26,4 @@ def upload_tifo_pictures():
 if __name__ == "__main__":
     upload_group_logos()
     upload_tifo_pictures()
-    print("✅ Migration complete! All files pushed to S3.")
+    print(" Migration complete! All files pushed to S3.")

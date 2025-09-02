@@ -8,7 +8,6 @@
   z-index: -1;
 }
 
-/* Centered container for button */
 .home-content {
   position: fixed;
   top: 50%;
@@ -21,7 +20,6 @@
   font-family: 'Rubik', sans-serif;
 }
 
-/* Main button styling */
 .btn-main {
   background-color: #e63946;
   color: #f1faee;
@@ -45,7 +43,6 @@
   transform: scale(1.05);
 }
 
-/* Responsive button size */
 @media (max-width: 480px) {
   .btn-main {
     font-size: 1.5rem;

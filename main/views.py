@@ -106,7 +106,6 @@ class GroupUpdate(LoginRequiredMixin, UpdateView):
         group.save()
         return redirect(f"/countries/{group.country.id}/")
 
-    # <<< ADD THIS
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['group'] = self.object
@@ -146,7 +145,6 @@ def tifo_create(request, group_id):
             tifo.group = group
             tifo.user = request.user
             
-            # Upload to S3 manually if picture exists
             picture_file = request.FILES.get('picture')
             if picture_file:
                 s3 = boto3.client(

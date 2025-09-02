@@ -98,11 +98,11 @@
 }
 .group-logo {
   display: block;
-  max-width: 180px;   /* restrict the width */
-  max-height: 120px;  /* restrict the height */
+  max-width: 180px;   
+  max-height: 120px;  
   width: auto;
   height: auto;
-  margin: 1rem 0 2rem;  /* spacing above and below */
+  margin: 1rem 0 2rem;  
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(230, 57, 70, 0.6);
   object-fit: contain;
@@ -113,7 +113,7 @@
     max-height: 90px;
     margin: 1rem auto 1.5rem;
   }
-  /* Stack each label/input pair vertically */
+  
   .form-container table,
   .form-container table tbody,
   .form-container table tr,
@@ -123,7 +123,7 @@
     padding: 0;
   }
   .form-container table tr {
-    margin-bottom: 1.5rem; /* spacing between fields */
+    margin-bottom: 1.5rem;
     border-bottom: 1px solid #e63946;
     padding-bottom: 1rem;
   }

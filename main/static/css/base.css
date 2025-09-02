@@ -1,25 +1,21 @@
-/* base.css */
 
-/* Reset some default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Typography */
 body {
   font-family: 'Rubik', sans-serif;
-  background-color: #121212; /* Dark background for a modern sports vibe */
+  background-color: #121212; 
   color: #f0f0f0;
   line-height: 1.6;
   font-size: 16px;
   min-height: 100vh;
 }
 
-/* Links */
 a {
-  color: #e63946; /* Vibrant red to highlight links */
+  color: #e63946; 
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -50,7 +46,7 @@ header {
 nav {
   flex: 1 1 auto;
   display: flex;
-  justify-content: center; /* centers navbar */
+  justify-content: center; 
 }
 
 .navbar {
@@ -107,7 +103,7 @@ main {
   padding: 0 1rem;
 }
 
-/* Responsive Typography */
+
 @media (max-width: 600px) {
   body {
     font-size: 14px;

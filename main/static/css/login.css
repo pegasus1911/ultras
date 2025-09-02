@@ -1,4 +1,3 @@
-/* login.css */
 
 h2 {
   text-align: center;
@@ -93,7 +92,6 @@ p a:focus {
   outline: none;
 }
 
-/* Responsive */
 @media (max-width: 480px) {
   form.login {
     padding: 1.5rem 1.75rem;
