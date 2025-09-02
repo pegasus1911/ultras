@@ -11,8 +11,8 @@
     {% for group in groups %}
       <div class="group-card">
         {% if group.logo %}
-          <img src="{{ group.logo.url }}" alt="{{ group.name }} logo" class="group-logo">
-        {% endif %}
+      <img src="{{ group.logo }}" alt="{{ group.name }} logo" class="group-logo">
+    {% endif %}
         <div class="group-info">
           <h2 class="group-name">{{ group.name }}</h2>
           <p class="group-country">Country: {{ group.country }}</p>

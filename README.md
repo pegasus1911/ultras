@@ -7,7 +7,7 @@
 Ultras World is a web application dedicated to football fan culture, specifically focusing on ultras groups worldwide. Users can explore different ultras groups by country, learn about their history, view tifos (fan displays), and gain insights into the culture surrounding football fandom. The app was built to document and celebrate the passionate fan communities behind football teams.
 
 ## Getting Started
-- **Deployed App:** [View Live](link-to-your-deployed-app)
+- **Deployed App:** [View Live](https://ultras-922969bc21cd.herokuapp.com/)
 - **Planning Materials:** [View Planning Documents](https://trello.com/b/2kbiUec1 ultras-world)
 - **GITHUB Repository:** [Ultras Github]( https://github.com/pegasus1911/ultras)
 

@@ -4,11 +4,12 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/group-details.css' %}">
 {% endblock %}
+
 {% block content %}
 <section class="group-detail-container">
   <div class="group-header">
     {% if group.logo %}
-      <img src="{{ group.logo.url }}" alt="{{ group.name }} logo" class="group-logo">
+      <img src="{{ group.logo }}" alt="{{ group.name }} logo" class="group-logo">
     {% endif %}
     <h1>{{ group.name }}</h1>
     <div class="group-info">
@@ -32,10 +33,10 @@
       <div class="tifo-grid">
         {% for tifo in group.tifo_set.all %}
           <div class="tifo-card">
-            <p><strong>Match:<br></strong> {{ tifo.match }}</p>
+            <p><strong>Match:</strong> {{ tifo.match }}</p>
             <a href="{% url 'tifo-detail' tifo.id %}">
               {% if tifo.picture %}
-                <img src="{{ tifo.picture.url }}" alt="{{ tifo.get_tifo_type_display }} tifo">
+                <img src="{{ tifo.picture }}" alt="{{ tifo.get_tifo_type_display }} tifo">
               {% else %}
                 <img src="{% static 'images/placeholder.png' %}" alt="No tifo image">
               {% endif %}

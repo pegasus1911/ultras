@@ -11,22 +11,23 @@
 
 <a href="{% url 'group-create' country.id %}" class="btn add-group-btn">Add a new Ultras Group</a>
 
-  <div class="groups-grid">
-    {% for group in groups %}
-      <div class="group-card">
-        {% if group.logo %}
-          <img src="{{ group.logo.url }}" alt="{{ group.name }} logo" class="group-logo">
-        {% endif %}
-        <div class="group-info">
-          <h2 class="group-name">{{ group.name }}</h2>
-          <p class="group-country">Country: {{ group.country }}</p>
-          <p class="group-founded">Founded: {{ group.founding_year }}</p>
-          <a href="{% url 'group-detail' group.id %}" class="btn">View Details</a>
-        </div>
+ <div class="groups-grid">
+  {% for group in groups %}
+    <div class="group-card">
+      {% if group.logo %}
+      <img src="{{ group.logo }}" alt="{{ group.name }} logo" class="group-logo">
+    {% endif %}
+      <div class="group-info">
+        <h2 class="group-name">{{ group.name }}</h2>
+        <p class="group-country">Country: {{ group.country.name }}</p>
+        <p class="group-founded">Founded: {{ group.founding_year }}</p>
+        <a href="{% url 'group-detail' group.id %}" class="btn">View Details</a>
       </div>
-    {% empty %}
-      <p>No ultras groups yet in {{ country.name }}.</p>
-    {% endfor %}
-  </div>
+    </div>
+  {% empty %}
+    <p>No ultras groups yet in {{ country.name }}.</p>
+  {% endfor %}
+</div>
+
 </section>
 {% endblock %}

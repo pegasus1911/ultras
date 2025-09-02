@@ -1,15 +1,28 @@
 {% extends 'base.html' %}
-{%load static%}
+{% load static %}
+
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/tifo-form.css' %}">
 {% endblock %}
+
 {% block content %}
 <h1>{% if edit %}Edit{% else %}Add{% endif %} Tifo for {{ group.name }}</h1>
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data" class="form-container">
     {% csrf_token %}
+    
+    {% if edit and form.instance.picture %}
+        <div class="current-picture">
+            <p>Current Picture:</p>
+            <img src="{{ form.instance.picture }}" alt="Tifo picture" class="preview-img">
+        </div>
+    {% endif %}
+    
     {{ form.as_p }}
-    <button type="submit" class="btn btn-success">{% if edit %}Update{% else %}Add{% endif %} Tifo</button>
+    
+    <button type="submit" class="btn btn-success">
+        {% if edit %}Update{% else %}Add{% endif %} Tifo
+    </button>
     <a href="{% url 'group-detail' group.id %}" class="btn btn-secondary">Cancel</a>
 </form>
 {% endblock %}

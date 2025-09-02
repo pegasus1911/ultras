@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
-{%load static%}
+{% load static %}
+
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/tifo-detail.css' %}">
 {% endblock %}
+
 {% block content %}
 <div class="tifo-container">
   <h2>{{ tifo.group.name }}</h2>
   <p><strong>Match:</strong> {{ tifo.match }}</p>
 
   {% if tifo.picture %}
-    <img src="{{ tifo.picture.url }}" alt="{{ tifo.get_tifo_type_display }}" class="tifo-picture">
+    <img src="{{ tifo.picture }}" alt="{{ tifo.get_tifo_type_display }}" class="tifo-picture">
   {% endif %}
 
   <p><strong>Type:</strong> {{ tifo.get_tifo_type_display }}</p>
@@ -25,25 +27,3 @@
   </div>
 </div>
 {% endblock %}
-{% comment %} {% block content %}
-<div class="tifo-container">
-<h2>{{ tifo.group.name }}</h2>
-<p><strong>Match:</strong> {{ tifo.match }}</p>
-
-{% if tifo.picture %}
-<img src="{{ tifo.picture.url }}" alt="{{ tifo.get_tifo_type_display }}" style="max-width:500px; border-radius:10px;">
-{% endif %}
-
-<p><strong>Type:</strong> {{ tifo.get_tifo_type_display }}</p>
-<p><strong>Description:</strong> {{ tifo.description }}</p>
-<p><strong>Date:</strong> {{ tifo.date }}</p>
-
-{% if tifo.user == request.user %}
-    <a href="{% url 'edit-tifo' tifo.pk %}" class="btn btn-success">Edit</a>
-    <a href="{% url 'delete-tifo' tifo.pk %}" class="btn btn-danger">Delete</a>
-{% endif %}
-
-<a href="{% url 'group-detail' tifo.group.id %}" class="btn btn-secondary">Back to {{ tifo.group.name }}</a>
-</div>
-
-{% endblock %} {% endcomment %}

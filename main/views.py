@@ -6,6 +6,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Country, Group, Tifo
 from .forms import TifoForm
+import uuid
+import boto3
+from django.conf import settings
+
 
 def home(request):
     return render(request, "home.html")
@@ -45,8 +49,6 @@ def country_detail(request, country_id):
     groups = country.groups.all()
     return render(request, "main/country_detail.html", {"country": country, "groups": groups})
 
-
-
 class GroupCreate(LoginRequiredMixin, CreateView):
     model = Group
     fields = ["name", "founding_year", "description", "logo"]
@@ -56,27 +58,60 @@ class GroupCreate(LoginRequiredMixin, CreateView):
         country_id = self.kwargs.get("country_id")
         country = get_object_or_404(Country, id=country_id)
         form.instance.country = country
-        return super().form_valid(form)
-    #i added this get_context_data to be able to show the country name while creating a groupp
+
+        group = form.save(commit=False)
+
+        logo_file = self.request.FILES.get('logo')
+        if logo_file:
+            s3 = boto3.client(
+                's3',
+                aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+                aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+                region_name=settings.AWS_S3_REGION_NAME
+            )
+            key = uuid.uuid4().hex[:6] + logo_file.name[logo_file.name.rfind('.'):]
+            s3.upload_fileobj(logo_file, settings.AWS_STORAGE_BUCKET_NAME, key)
+            group.logo = f'https://{settings.AWS_S3_CUSTOM_DOMAIN}/{key}'
+
+        group.save()
+        return redirect(f"/countries/{country.id}/")
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         country_id = self.kwargs.get("country_id")
         context['country'] = get_object_or_404(Country, id=country_id)
-        context['group'] = None  
+        context['group'] = None
         return context
-
-    def get_success_url(self):
-        return f"/countries/{self.object.country.id}/"
-
 
 class GroupUpdate(LoginRequiredMixin, UpdateView):
     model = Group
     fields = ["name", "founding_year", "description", "logo"]
     template_name = "groups/group_form.html"
 
-    def get_success_url(self):
-        return f"/countries/{self.object.country.id}/"
+    def form_valid(self, form):
+        group = form.save(commit=False)
 
+        logo_file = self.request.FILES.get('logo')
+        if logo_file:
+            s3 = boto3.client(
+                's3',
+                aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+                aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+                region_name=settings.AWS_S3_REGION_NAME
+            )
+            key = uuid.uuid4().hex[:6] + logo_file.name[logo_file.name.rfind('.'):]
+            s3.upload_fileobj(logo_file, settings.AWS_STORAGE_BUCKET_NAME, key)
+            group.logo = f'https://{settings.AWS_S3_CUSTOM_DOMAIN}/{key}'
+
+        group.save()
+        return redirect(f"/countries/{group.country.id}/")
+
+    # <<< ADD THIS
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['group'] = self.object
+        context['country'] = self.object.country
+        return context
 
 class GroupDelete(LoginRequiredMixin, DeleteView):
     model = Group
@@ -110,11 +145,26 @@ def tifo_create(request, group_id):
             tifo = form.save(commit=False)
             tifo.group = group
             tifo.user = request.user
+            
+            # Upload to S3 manually if picture exists
+            picture_file = request.FILES.get('picture')
+            if picture_file:
+                s3 = boto3.client(
+                    's3',
+                    aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+                    aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+                    region_name=settings.AWS_S3_REGION_NAME
+                )
+                key = uuid.uuid4().hex[:6] + picture_file.name[picture_file.name.rfind('.'):]
+                s3.upload_fileobj(picture_file, settings.AWS_STORAGE_BUCKET_NAME, key)
+                tifo.picture = f'https://{settings.AWS_S3_CUSTOM_DOMAIN}/{key}'
+
             tifo.save()
             return redirect("group-detail", group_id=group.id)
     else:
         form = TifoForm()
     return render(request, "tifos/tifo_form.html", {"form": form, "group": group})
+
 
 @login_required
 def tifo_detail(request, tifo_id):
@@ -130,7 +180,19 @@ def tifo_edit(request, tifo_id):
     if request.method == "POST":
         form = TifoForm(request.POST, request.FILES, instance=tifo)
         if form.is_valid():
-            form.save()
+            edited_tifo = form.save(commit=False)
+            picture_file = request.FILES.get('picture')
+            if picture_file:
+                s3 = boto3.client(
+                    's3',
+                    aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+                    aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+                    region_name=settings.AWS_S3_REGION_NAME
+                )
+                key = uuid.uuid4().hex[:6] + picture_file.name[picture_file.name.rfind('.'):]
+                s3.upload_fileobj(picture_file, settings.AWS_STORAGE_BUCKET_NAME, key)
+                edited_tifo.picture = f'https://{settings.AWS_S3_CUSTOM_DOMAIN}/{key}'
+            edited_tifo.save()
             return redirect("group-detail", group_id=tifo.group.id)
     else:
         form = TifoForm(instance=tifo)

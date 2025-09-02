@@ -19,6 +19,13 @@
   <table>
     {{ form.as_table }}
   </table>
+
+  {% if group and group.logo %}
+    <p>Current logo:</p>
+      <img src="{{ group.logo }}" alt="{{ group.name }} logo" class="group-logo">
+  {% endif %}
+  
   <button type="submit" class="btn submit">Submit!</button>
+<a href="{% url 'country-detail' country.id %}" class="btn cancel">Cancel</a>
 </form>
 {% endblock %}
