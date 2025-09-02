@@ -111,6 +111,30 @@ form .btn {
   color: #f1faee;
   outline: none;
 }
+/* Current picture image styling */
+.current-picture {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.current-picture p {
+  color: #e63946;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.current-picture img.preview-img {
+  max-width: 220px;     /* limit the width */
+  max-height: 140px;    /* limit the height */
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(230, 57, 70, 0.6);
+  object-fit: contain;
+  display: inline-block;
+}
+
 
 /* Responsive */
 @media (max-width: 480px) {
@@ -125,5 +149,10 @@ form .btn {
 
   form .btn-secondary {
     margin-right: 0;
+  }
+   .current-picture img.preview-img {
+    max-width: 160px;
+    max-height: 100px;
+    margin: 0 auto 1rem;
   }
 }
