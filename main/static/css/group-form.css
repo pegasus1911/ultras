@@ -96,14 +96,48 @@
   background-color: #a62832;
   outline: none;
 }
-
 @media (max-width: 600px) {
-  .form-container table td:first-child {
-    white-space: normal;
-    width: 40%;
+  /* Stack each label/input pair vertically */
+  .form-container table,
+  .form-container table tbody,
+  .form-container table tr,
+  .form-container table td {
+    display: block;
+    width: 100%;
+    padding: 0;
   }
-
+  .form-container table tr {
+    margin-bottom: 1.5rem; /* spacing between fields */
+    border-bottom: 1px solid #e63946;
+    padding-bottom: 1rem;
+  }
+  .form-container table td:first-child {
+    color: #e63946;
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    white-space: normal;
+  }
   .form-container table td:last-child {
-    width: 60%;
+    width: 100%;
+  }
+  .form-container table input[type="text"],
+  .form-container table input[type="number"],
+  .form-container table input[type="file"],
+  .form-container table select,
+  .form-container table textarea {
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+  }
+  .btn.submit {
+    width: 100%;
+    padding: 1rem 0;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  .form-container {
+    padding: 1.5rem 1rem;
+    margin: 1rem auto 3rem;
   }
 }
