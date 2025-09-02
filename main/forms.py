@@ -1,5 +1,6 @@
 from django import forms
 from .models import Tifo
+from django.core.files.uploadedfile import UploadedFile
 
 class TifoForm(forms.ModelForm):
     class Meta:
@@ -19,8 +20,11 @@ class TifoForm(forms.ModelForm):
         }
 
     # Optional: clear picture if user wants to remove it when editing
-    def clean_picture(self):
-        picture = self.cleaned_data.get('picture')
-        if picture and picture.size > 5 * 1024 * 1024:  # 5MB limit
+    
+def clean_picture(self):
+    picture = self.cleaned_data.get('picture')
+    # Only check size if it's a newly uploaded file
+    if picture and isinstance(picture, UploadedFile):
+        if picture.size > 5 * 1024 * 1024:  # 5MB limit
             raise forms.ValidationError("Image file too large ( > 5MB ).")
-        return picture
+    return picture

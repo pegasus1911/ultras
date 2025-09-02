@@ -33,7 +33,7 @@
       <div class="tifo-grid">
         {% for tifo in group.tifo_set.all %}
           <div class="tifo-card">
-            <p><strong>Match:</strong> {{ tifo.match }}</p>
+            <p> {{ tifo.match }}</p>
             <a href="{% url 'tifo-detail' tifo.id %}">
               {% if tifo.picture %}
                 <img src="{{ tifo.picture }}" alt="{{ tifo.get_tifo_type_display }} tifo">
@@ -47,7 +47,7 @@
     {% else %}
       <p class="no-tifos">⚠️ This group has not created any tifos yet.</p>
     {% endif %}
-
+    <br>  <br>
     <a href="{% url 'country-detail' group.country.id %}" class="btn btn-secondary">
       See All {{ group.country.name }} Groups
     </a>
