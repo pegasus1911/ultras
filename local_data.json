@@ -1,5 +1,95 @@
 [
 {
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$ybvR7DLLfIN7Sg6KIBnrzR$kyQErt49m55Dh+KTGlT/yh8OqlIr3W6DrQv8keL1zRg=",
+    "last_login": "2025-08-31T14:32:52.286Z",
+    "is_superuser": false,
+    "username": "ali",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-29T08:13:50.748Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$1B8hQQWAgA2QUjpDg0YrUu$K/U1rHuIuvc5zUzpjoK/JzMnV8jFpoQe1iQw1uJut9Y=",
+    "last_login": "2025-08-29T12:24:53.326Z",
+    "is_superuser": false,
+    "username": "amelia",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-29T12:22:18.719Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$K3s1uuQUivYXiexgIQoMyi$9DWfXiQyW6yxDovUZRVNEw4fse1jhcbgMrjPn1FnpT0=",
+    "last_login": "2025-08-29T12:24:34.440Z",
+    "is_superuser": false,
+    "username": "ahmed",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-29T12:24:34.212Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$ZoXFbQtxdXs2dd9ktXmG3x$1FtxaxHbLBRSqz5rbUPv0KrKWgq/dFqwcGP0p14rzxg=",
+    "last_login": "2025-08-30T07:54:40.171Z",
+    "is_superuser": false,
+    "username": "shika",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-30T07:54:39.935Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$QfL5GRgcmeZdrBP0D4oFkY$x7JkBWGBJhyIU6ThoqYTzphZYRFXISUdCLYie5GZnC8=",
+    "last_login": "2025-09-02T11:54:32.652Z",
+    "is_superuser": false,
+    "username": "saad",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-31T09:32:47.181Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "main.country",
   "pk": 1,
   "fields": {
